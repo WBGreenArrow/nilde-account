@@ -1,0 +1,28 @@
+{
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ],
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "ts": "never"
+        }
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "eslint:recommended", 
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "plugins": ["@typescript-eslint", "prettier","import"]
+  }
