@@ -11,8 +11,27 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  userName  String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id                String              @id @default(uuid())
+  userName          String              @unique
+  password          String
+  createdAt         DateTime            @default(now())
+  Account           Account[]
+  TransitionAccount TransitionAccount[]
+}
+
+model TransitionAccount {
+  id            String   @id @default(uuid())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  trasitionType String
+  desc          String
+  createdAt     DateTime @default(now())
+  value         Float
+}
+
+model Account {
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  amount Float
 }

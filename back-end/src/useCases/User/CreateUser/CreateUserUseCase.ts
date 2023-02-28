@@ -28,6 +28,13 @@ class CreateUserUseCase {
       },
     });
 
+    const account = await client.account.create({
+      data: {
+        userId: user.id,
+        amount: 0.0,
+      },
+    });
+
     const token = sign({}, process.env.JWT_SECRET, {
       subject: userName,
       expiresIn: '4h',
@@ -36,6 +43,7 @@ class CreateUserUseCase {
     const response = {
       userId: user.id,
       token,
+      account,
     };
 
     return response;
