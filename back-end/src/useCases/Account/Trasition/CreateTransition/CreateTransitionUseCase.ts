@@ -11,6 +11,7 @@ interface ICreateTransition {
 class CreateTransitionUseCase {
   async execute({ userId, desc, trasitionType, value, createdAt }: ICreateTransition) {
     let dateFormat;
+    let newAmountBalance;
 
     if (!desc || desc == '') {
       throw new Error('Description is required');
@@ -34,6 +35,30 @@ class CreateTransitionUseCase {
       dateFormat = newDate.toISOString();
     }
 
+    const { id, amount } = await client.account.findFirst({
+      where: {
+        userId,
+      },
+    });
+
+    if (trasitionType === 'cashout') {
+      if (amount < value) {
+        throw new Error('Insufficient funds');
+      }
+      newAmountBalance = amount - value;
+    } else {
+      newAmountBalance = amount + value;
+    }
+
+    const { amount: accountBalance } = await client.account.update({
+      where: {
+        id,
+      },
+      data: {
+        amount: newAmountBalance,
+      },
+    });
+
     const transition = await client.transitionAccount.create({
       data: {
         userId,
@@ -44,13 +69,16 @@ class CreateTransitionUseCase {
       },
     });
 
+    // if (transition) {
+    // }
+
     // new Date(dateFormat).toLocaleString('pt-BR', {
     //   day: '2-digit',
     //   month: '2-digit',
     //   year: 'numeric',
     // });
 
-    return { transition };
+    return { transition, accountBalance };
   }
 }
 

@@ -6,7 +6,7 @@ class CreateTransitionController {
     const { userId, desc, trasitionType, value, createdAt } = request.body;
 
     const createTransitionUseCase = new CreateTransitionUseCase();
-    const { transition } = await createTransitionUseCase.execute({
+    const { transition, accountBalance } = await createTransitionUseCase.execute({
       userId,
       desc,
       trasitionType,
@@ -14,7 +14,7 @@ class CreateTransitionController {
       createdAt,
     });
 
-    return response.json(transition);
+    return response.json({ transition, accountBalance });
   }
 }
 
