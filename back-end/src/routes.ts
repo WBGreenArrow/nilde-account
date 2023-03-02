@@ -4,6 +4,7 @@ import { CreateUserController } from './useCases/User/CreateUser/CreateUserContr
 
 import { CreateTransitionController } from './useCases/Account/Trasition/CreateTransition/CreateTransitionController';
 import { ListTransitionsController } from './useCases/Account/Trasition/ListTransitions/ListTransitionsController';
+import { ensureAutenticate } from './middlewares/ensureAuthenticate';
 
 const router = Router();
 
@@ -17,7 +18,7 @@ router.get('/', (request, response) => {
 });
 
 router.get('/transitions', listTransitionsController.handle);
-router.post('/transition', createTransitionController.handle);
+router.post('/transition', ensureAutenticate, createTransitionController.handle);
 
 router.post('/authenticate', authenticateController.handle);
 router.post('/user', createUserController.handle);

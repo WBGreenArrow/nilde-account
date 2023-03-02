@@ -3,7 +3,7 @@ import { CreateTransitionUseCase } from './CreateTransitionUseCase';
 
 class CreateTransitionController {
   async handle(request: Request, response: Response) {
-    const { userId, desc, trasitionType, value } = request.body;
+    const { userId, desc, trasitionType, value, createdAt } = request.body;
 
     const createTransitionUseCase = new CreateTransitionUseCase();
     const { transition } = await createTransitionUseCase.execute({
@@ -11,6 +11,7 @@ class CreateTransitionController {
       desc,
       trasitionType,
       value,
+      createdAt,
     });
 
     return response.json(transition);
