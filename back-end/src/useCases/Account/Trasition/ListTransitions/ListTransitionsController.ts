@@ -7,11 +7,11 @@ class ListTransitionsController {
 
     const listTransitionsUseCase = new ListTransitionsUseCase();
 
-    const { transitions } = await listTransitionsUseCase.execute({
+    const { transitions, accountBalance } = await listTransitionsUseCase.execute({
       userId,
     });
 
-    return response.json(transitions);
+    return response.json({ accountBalance, transitions });
   }
 }
 

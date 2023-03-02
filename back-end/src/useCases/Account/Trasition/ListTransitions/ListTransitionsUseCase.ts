@@ -24,9 +24,18 @@ class ListTransitionsUseCase {
       where: {
         userId,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
-    return { transitions };
+    const { amount: accountBalance } = await client.account.findFirst({
+      where: {
+        userId,
+      },
+    });
+
+    return { transitions, accountBalance };
   }
 }
 
