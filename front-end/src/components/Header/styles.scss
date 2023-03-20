@@ -1,0 +1,22 @@
+@use '../../index.scss' as v;
+
+
+.headerContainer{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+
+    & > :last-child{
+        width: 150px;
+        height: 50px;
+
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        border-radius: 6px;
+
+        font-family: "Roboto";
+        color: v.$white-color;
+        background-color: v.$green-color;
+    }
+}

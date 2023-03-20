@@ -3,6 +3,7 @@ import React from 'react'
 import './styles.scss'
 
 import { TransitionTypeCard } from '../../components/TransitionTypeCard'
+import { Header } from '../../components/Header'
 
 export const Home = () => {
   return (
@@ -10,9 +11,12 @@ export const Home = () => {
       <div className="homeBackgroundHeader"></div>
       <div className="homeBackgroundBody"></div>
       <div className="homeContentWrapper">
-        <div className="homeContent"></div>
+        <main className="homeContent">
+          <Header />
+
+          {/* <TransitionTypeCard label="Entrada" transitionType="deposit" /> */}
+        </main>
       </div>
-      {/* <TransitionTypeCard label="Entrada" transitionType="deposit" /> */}
     </div>
   )
 }
