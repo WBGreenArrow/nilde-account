@@ -1,0 +1,24 @@
+@use '../../index.scss' as v;
+
+.transitionTypeCardWrapper{
+    width: 215px;
+    height: 58px;
+    border-radius: 6px;
+    background-color: v.$grey3-color;
+
+    & > div{
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > label{
+            margin-left: 8px;
+            font-size: 16px;
+            font-family:"Roboto";
+            color: v.$white-color;
+        }
+    }
+}
