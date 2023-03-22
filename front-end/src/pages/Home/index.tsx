@@ -5,6 +5,7 @@ import './styles.scss'
 import { TransitionTypeCard } from '../../components/TransitionTypeCard'
 import { Header } from '../../components/Header'
 import { CardBalance } from '../../components/CardBalance'
+import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg'
 
 export const Home = () => {
   return (
@@ -19,7 +20,13 @@ export const Home = () => {
             <CardBalance label="Saídas" type="checkout" value="R$1.259,00" />
             <CardBalance label="Total" type="balance" value="R$16.141,00" />
           </div>
-
+          <div className="searchTransitionContainer">
+            <input type="text" placeholder="Busque uma transação" />
+            <span>
+              <SearchIcon />
+              Buscar
+            </span>
+          </div>
           {/* <TransitionTypeCard label="Entrada" transitionType="deposit" /> */}
         </main>
       </div>
