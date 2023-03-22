@@ -13,7 +13,7 @@ type CardBalanceProps = {
 }
 
 export const CardBalance = ({ label, type, value }: CardBalanceProps) => {
-  const [iconCard, setIconCard] = useState<string>('')
+  const [iconCard, setIconCard] = useState<string>(moneyImg)
 
   useEffect(() => {
     if (type === 'deposit') {
@@ -25,7 +25,6 @@ export const CardBalance = ({ label, type, value }: CardBalanceProps) => {
       setIconCard(() => arrowDownImg)
       return
     }
-    setIconCard(() => moneyImg)
   })
 
   return (
