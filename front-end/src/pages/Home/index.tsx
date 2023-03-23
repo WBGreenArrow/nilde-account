@@ -6,6 +6,7 @@ import { TransitionTypeCard } from '../../components/TransitionTypeCard'
 import { Header } from '../../components/Header'
 import { CardBalance } from '../../components/CardBalance'
 import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg'
+import { TransitionList } from '../../components/TransitionList'
 
 export const Home = () => {
   return (
@@ -27,6 +28,7 @@ export const Home = () => {
               Buscar
             </span>
           </div>
+          <TransitionList />
           {/* <TransitionTypeCard label="Entrada" transitionType="deposit" /> */}
         </main>
       </div>
