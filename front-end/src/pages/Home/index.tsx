@@ -12,7 +12,6 @@ export const Home = () => {
   return (
     <div className="homeContainer">
       <div className="homeBackgroundHeader"></div>
-      <div className="homeBackgroundBody"></div>
       <div className="homeContentWrapper">
         <main className="homeContent">
           <Header />
